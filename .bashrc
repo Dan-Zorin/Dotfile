@@ -2,6 +2,20 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Load starship prompt
+__main() {
+    local major="${BASH_VERSINFO[0]}"
+    local minor="${BASH_VERSINFO[1]}"
+
+    if ((major > 4)) || { ((major == 4)) && ((minor >= 1)); }; then
+        source <("/usr/bin/starship" init bash --print-full-init)
+    else
+        source /dev/stdin <<<"$("/usr/bin/starship" init bash --print-full-init)"
+    fi
+}
+__main
+unset -f __main
+
 # Adding to the path #
 if [ -d "$HOME/.bin" ] ;
   then PATH="$HOME/.bin:$PATH"
@@ -16,16 +30,6 @@ bind "set completion-ignore-case on"
 
 # Check the window size after each command and, if necessary,
 shopt -s checkwinsize
-
-
-### EXPORT ###
-export HISTCONTROL=ignoreboth:erasedups
-export TERM="xterm-256color"
-export EDITOR="vim"
-
-
-### PS ###
-PS1='\[\e[0;2m\]\u\[\e[0m\]: \[\e[0;38;5;46m\]<\[\e[0;38;5;46m\]\w\[\e[0;38;5;46m\]> \[\e[0;91m\][\[\e[0;91m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2)\[\e[0;91m\]]\[\e[0;1m\]\$ \[\e[0m\]'
 
 
 ### ALIASES ###
@@ -64,9 +68,6 @@ pts()
 {
     cd "/home/ton1czech/CODING/Projects/$1"
 }
-
-alias gngdir="cd /home/ton1czech/CODING/Projects/Python/Python3/gingy"
-alias cvddir="cd /home/ton1czech/CODING/Projects/JavaScript/React/covid19"
 
 # super list dir command
 alias ls="exa -lah --color=always --group-directories-first"
@@ -157,4 +158,5 @@ ex ()
   fi
 }
 
-archey
+neofetch
+. "$HOME/.cargo/env"

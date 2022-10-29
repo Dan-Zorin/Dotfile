@@ -1,48 +1,114 @@
-##############################
-# ~/.config/fish/config.fish #
-##############################
-
-### ADDING TO THE PATH ###
-set -e fish_user_paths
-set -U fish_user_paths $HOME/.local/bin $HOME/Applications $fish_user_paths
-
-
-### EXPORT ###
+﻿## Set values
+# Hide welcome message
 set fish_greeting
-set TERM "xterm-256color"
-set EDITOR "vim"
+set VIRTUAL_ENV_DISABLE_PROMPT "1"
+set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+
+# Set settings for https://github.com/franciscolourenco/done
+set -U __done_min_cmd_duration 10000
+set -U __done_notification_urgency_level low
 
 
-### SET MANPAGER ###
-set -x MANPAGER '/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
+## Environment setup
+# Apply .profile: use this to put fish compatible .profile stuff in
+if test -f ~/.fish_profile
+  source ~/.fish_profile
+end
 
+# Add ~/.local/bin to PATH
+if test -d ~/.local/bin
+    if not contains -- ~/.local/bin $PATH
+        set -p PATH ~/.local/bin
+    end
+end
 
-### VI MODE ###
-function fish_user_key_bindings
-    fish_vi_key_bindings
+# Add depot_tools to PATH
+if test -d ~/Applications/depot_tools
+    if not contains -- ~/Applications/depot_tools $PATH
+        set -p PATH ~/Applications/depot_tools
+    end
 end
 
 
-### AUTOCOMPLETE AND HIGHLIGHT COLORS ###
-set fish_color_normal brcyan
-set fish_color_autosuggestion '#7d7d7d'
-set fish_color_command brcyan
-set fish_color_error '#ff6c6b'
-set fish_color_param brcyan
+## Starship prompt
+if status --is-interactive
+   source ("/usr/bin/starship" init fish --print-full-init | psub)
+end
 
 
-### ALIASES ###
-# navigation
+## Functions
+# Functions needed for !! and !$ https://github.com/oh-my-fish/plugin-bang-bang
+function __history_previous_command
+  switch (commandline -t)
+  case "!"
+    commandline -t $history[1]; commandline -f repaint
+  case "*"
+    commandline -i !
+  end
+end
+
+function __history_previous_command_arguments
+  switch (commandline -t)
+  case "!"
+    commandline -t ""
+    commandline -f history-token-search-backward
+  case "*"
+    commandline -i '$'
+  end
+end
+
+if [ "$fish_key_bindings" = fish_vi_key_bindings ];
+  bind -Minsert ! __history_previous_command
+  bind -Minsert '$' __history_previous_command_arguments
+else
+  bind ! __history_previous_command
+  bind '$' __history_previous_command_arguments
+end
+
+# Fish command history
+function history
+    builtin history --show-time='%F %T '
+end
+
+function backup --argument filename
+    cp $filename $filename.bak
+end
+
+# Copy DIR1 DIR2
+function copy
+    set count (count $argv | tr -d \n)
+    if test "$count" = 2; and test -d "$argv[1]"
+	set from (echo $argv[1] | trim-right /)
+	set to (echo $argv[2])
+        command cp -r $from $to
+    else
+        command cp $argv
+    end
+end
+
+## Import colorscheme from 'wal' asynchronously
+if type "wal" >> /dev/null 2>&1
+   cat ~/.cache/wal/sequences
+end
+
+## Useful aliases
+# Replace ls with exa
+alias ls='exa -al --color=always --group-directories-first --icons' # preferred listing
+alias lt='exa -aT --color=always --group-directories-first --icons' # tree listing
+
+# Replace some more things with better alternatives
+alias cat='bat --style header --style rules --style snip --style changes --style header'
+[ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'
+
+# Common use
+alias tarnow='tar -acf '
+alias untar='tar -zxvf '
+alias wget='wget -c '
 alias ..='cd ..'
 alias ...='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
-
-alias tutdir="cd /home/ton1czech/CODING/Tutorials"
-alias ptsdir="cd /home/ton1czech/CODING/Projects"
-alias gngdir="cd /home/ton1czech/CODING/Projects/Python/Python3/gingy"
-alias cvddir="cd /home/ton1czech/CODING/Projects/JavaScript/React/covid19"
 
 # changing "ls" to "exa"
 alias ls='exa -lah --color=always --group-directories-first'
@@ -53,99 +119,48 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-# confirm before overwriting something
-alias cp="cp -i"
-alias mv='mv -i'
-alias rm='rm -i'
+# quick jump
+alias tut='cd /mnt/TOSHIBA300/CODING/tutorials/'
 
-# top process eating memory
-alias psmem='ps auxf | sort -nr -k 4'
-alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+alias pts='cd /mnt/TOSHIBA300/CODING/projects/'
 
-# top process eating cpu ##
-alias pscpu='ps auxf | sort -nr -k 3'
-alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+# custom git
+alias gaa='git add .'
 
-# custom git commands
-alias gS="git pull"
-alias gA="git add ."
-alias gC="git commit -m"
-alias gP="git push -u origin master"
+function gcmn
+    git commit -m "🎁 NEW: $argv"
+end
 
-# sync .files inside git repository Dotfiles
-alias config="/usr/bin/git --git-dir=$HOME/Dotfiles --work-tree=$HOME"
+function gcmi
+    git commit -m "👌 IMPROVE: $argv"
+end
 
+function gcmr
+    git commit -m "❌ REMOVED: $argv"
+end
 
-### ZASHIMI STYLE ###
-function fish_prompt
-  set -l last_status $status
-  set -l cyan (set_color -o cyan)
-  set -l yellow (set_color -o yellow)
-  set -g red (set_color -o red)
-  set -g blue (set_color -o blue)
-  set -l green (set_color -o green)
-  set -g normal (set_color normal)
+function gcmb
+    git commit -m "🐛 BUG FIX: $argv"
+end
 
-  set -l ahead (_git_ahead)
-  set -g whitespace ' '
+alias gpp='git push -u origin master'
 
-  if test $last_status = 0
-    set initial_indicator "$green◆"
-    set status_indicator "$normal❯$cyan❯$green❯"
-  else
-    set initial_indicator "$red✖ $last_status"
-    set status_indicator "$red❯$red❯$red❯"
-  end
-  set -l cwd $cyan(basename (prompt_pwd))
+# Create new dir and cd into it
+function mkcd -d "Create a directory and set CWD"
+    command mkdir $argv
+    if test $status = 0
+        switch $argv[(count $argv)]
+            case '-*'
 
-  if [ (_git_branch_name) ]
-
-    if test (_git_branch_name) = 'master'
-      set -l git_branch (_git_branch_name)
-      set git_info "$normal git:($red$git_branch$normal)"
-    else
-      set -l git_branch (_git_branch_name)
-      set git_info "$normal git:($blue$git_branch$normal)"
+            case '*'
+                cd $argv[(count $argv)]
+                return
+        end
     end
-
-    if [ (_is_git_dirty) ]
-      set -l dirty "$yellow ✗"
-      set git_info "$git_info$dirty"
-    end
-  end
-
-  # Notify if a command took more than 5 minutes
-  if [ "$CMD_DURATION" -gt 300000 ]
-    echo The last command took (math "$CMD_DURATION/1000") seconds.
-  end
-
-  echo -n -s $initial_indicator $whitespace $cwd $git_info $whitespace $ahead $status_indicator $whitespace
 end
 
-function _git_ahead
-  set -l commits (command git rev-list --left-right '@{upstream}...HEAD' ^/dev/null)
-  if [ $status != 0 ]
-    return
-  end
-  set -l behind (count (for arg in $commits; echo $arg; end | grep '^<'))
-  set -l ahead  (count (for arg in $commits; echo $arg; end | grep -v '^<'))
-  switch "$ahead $behind"
-    case ''     # no upstream
-    case '0 0'  # equal to upstream
-      return
-    case '* 0'  # ahead of upstream
-      echo "$blue↑$normal_c$ahead$whitespace"
-    case '0 *'  # behind upstream
-      echo "$red↓$normal_c$behind$whitespace"
-    case '*'    # diverged from upstream
-      echo "$blue↑$normal$ahead $red↓$normal_c$behind$whitespace"
-  end
-end
 
-function _git_branch_name
-  echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
-end
-
-function _is_git_dirty
-  echo (command git status -s --ignore-submodules=dirty ^/dev/null)
+## Run paleofetch if session is interactive
+if status --is-interactive
+   neofetch
 end

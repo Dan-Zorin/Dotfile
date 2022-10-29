@@ -1,19 +1,18 @@
 {
   // *************** THEME **************
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Dracula",
+  "workbench.colorTheme": "Dracula Purple",
 
   // *************** FONT **************
   "editor.fontFamily": "'Fira Code', 'Consolas', 'Courier New', monospace",
   "editor.fontLigatures": true,
 
   // *************** BASIC **************
-  "window.title": "👉 ${dirty}${activeEditorShort}",
+  "window.title": ".",
   "files.enableTrash": false,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "window.zoomLevel": 2,
   "editor.cursorStyle": "line",
   "editor.lineNumbers": "on",
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
@@ -23,19 +22,33 @@
   "editor.detectIndentation": false,
   "workbench.settings.editor": "json",
   "workbench.settings.useSplitJSON": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "css.lint.unknownAtRules": "ignore",
+  "editor.inlineSuggest.enabled": true,
+  "window.zoomLevel": 3,
 
   // *************** EXTENSIONS **************
+  // Live Server
+  "liveServer.settings.donotVerifyTags": true,
+
   // Live Sass Compiler
   "liveSassCompile.settings.autoprefix": [],
   "liveSassCompile.settings.generateMap": false,
-
-  // Indent Rainbow
-  "indentRainbow.colorOnWhiteSpaceOnly": true,
+  "liveSassCompile.settings.showOutputWindowOn": "None",
 
   // Prettier
-  "prettier.printWidth": 120,
+  "prettier.arrowParens": "avoid",
+  "prettier.bracketSpacing": true,
+  "prettier.jsxBracketSameLine": false,
   "prettier.jsxSingleQuote": true,
+  "prettier.printWidth": 80,
+  "prettier.semi": false,
   "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+
+  // Glass It
+  "glassit.alpha": 200,
 
   // *************** LANGUAGES **************
   // Python
@@ -49,9 +62,6 @@
     "editor.semanticHighlighting.enabled": true
   },
 
-  // C++
-  "C_Cpp.updateChannel": "Insiders",
-
   // C#
   "csharp.suppressDotnetInstallWarning": true,
   "csharp.format.enable": false,
@@ -61,7 +71,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
-  "vetur.format.options.useTabs": true,
   "prettier.vueIndentScriptAndStyle": true,
 
   // Css
@@ -72,7 +81,7 @@
 
   // Go
   "[go]": {
-    "editor.insertSpaces": false,
+    "editor.insertSpaces": true,
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
       "source.organizeImports": false
