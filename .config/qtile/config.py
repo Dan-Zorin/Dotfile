@@ -179,119 +179,162 @@ widget_defaults = init_widgets_defaults()
 
 def init_widgets_list():
     widgets_list = [
-                widget.Spacer(
-                    length=10,
-                    background='#1F1D2E',
-                ),
-                widget.Image(
-                    filename='~/.config/qtile/Assets/launch_Icon.png',
-                    margin=2,
-                    background='#1F1D2E',
-                    decorations = [
-                        PowerLineDecoration(
-                            path='rounded_left',
-                            override_colour='#1F1D2E', 
-                            size=10
-                        )
-                    ],
-                ),
-                widget.GroupBox(
-                    fontsize=16,
-                    borderwidth=3,
-                    highlight_method='block',
-                    active='#7F61A7',
-                    block_highlight_text_color="#CFB3E5",
-                    highlight_color='#4B427E',
-                    inactive='#BD85CB',
-                    foreground='#4B427E',
-                    background='#4B427E',
-                    this_current_screen_border='#52548D',
-                    this_screen_border='#52548D',
-                    other_current_screen_border='#52548D',
-                    other_screen_border='#52548D',
-                    urgent_border='#52548D',
-                    rounded=True,
-                    disable_drag=True,
-                    decorations = [
-                        PowerLineDecoration(
-                            path='rounded_left',
-                            override_colour='#4B427E', 
-                            size=10
-                        )
-                    ],
-                 ),
-                widget.CurrentLayoutIcon(
-                    background='#52548D',
-                    padding = 0,
-                    scale = 0.5,
-                ),
-                widget.CurrentLayout(
-                    background='#52548D',
-                    font= 'JetBrains Mono Bold',
-                    decorations = [
-                        PowerLineDecoration(
-                            path='rounded_left',
-                            override_colour='#52548D', 
-                            size=10
-                        )
-                    ],
-                ),
-                widget.WindowName(
-                    background = '#7676B2',
-                    format = "{name}",
-                    font='JetBrains Mono Bold',
-                    empty_group_string = 'Desktop',
-                    decorations = [
-                        PowerLineDecoration(
-                            path='rounded_right',
-                            override_colour='#7676B2', 
-                            size=10
-                        )
-                    ],
-                ),
-                widget.Memory(format='﬙{MemUsed: .0f}{mm}',
-                    font="JetBrains Mono Bold",
-                    fontsize=12,
-                    padding=10,
-                    background='#52548D',
-                    decorations = [
-                        PowerLineDecoration(
-                            path='rounded_right',
-                            override_colour='#52548D', 
-                            size=10
-                        )
-                    ],
-                ),
-                widget.TextBox(
-                    text="",
-                    font="Font Awesome 6 Free Solid",
-                    fontsize=13,
-                    padding=0,
-                    background='#4B427E',
-                ),
-                widget.PulseVolume(
-                    font='JetBrains Mono Bold',
-                    fontsize=12,
-                    padding=10,
-                    background='#4B427E',
-                    decorations = [
-                        PowerLineDecoration(
-                            path='rounded_right',
-                            override_colour='#4B427E', 
-                            size=10
-                        )
-                    ],
-                ),
-                widget.Clock(
-                    format='  %I:%M %p',
-                    background='#1F1D2E',
-                    font="JetBrains Mono Bold",
-                ),
-                widget.Spacer(
-                    length=10,
-                    background='#1F1D2E',
+        widget.Spacer(
+            length=10,
+            background='#1F1D2E',
+        ),
+        widget.Image(
+            filename='~/.config/qtile/Assets/launch_Icon.png',
+            margin=2,
+            background='#1F1D2E',
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_left',
+                    override_colour='#1F1D2E', 
+                    size=10
                 )
-              ]
+            ],
+        ),
+        widget.GroupBox(
+            fontsize=16,
+            borderwidth=3,
+            highlight_method='block',
+            active='#7F61A7',
+            block_highlight_text_color="#CFB3E5",
+            highlight_color='#4B427E',
+            inactive='#BD85CB',
+            foreground='#4B427E',
+            background='#4B427E',
+            this_current_screen_border='#52548D',
+            this_screen_border='#52548D',
+            other_current_screen_border='#52548D',
+            other_screen_border='#52548D',
+            urgent_border='#52548D',
+            rounded=True,
+            disable_drag=True,
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_left',
+                    override_colour='#4B427E', 
+                    size=10
+                )
+            ],
+            ),
+        widget.CurrentLayoutIcon(
+            background='#52548D',
+            padding=0,
+            scale=0.5,
+        ),
+        widget.CurrentLayout(
+            background='#52548D',
+            font='JetBrains Mono Bold',
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_left',
+                    override_colour='#52548D', 
+                    size=10
+                )
+            ],
+        ),
+        widget.WindowName(
+            background='#7676B2',
+            format="{name}",
+            font='JetBrains Mono Bold',
+            empty_group_string = 'Desktop',
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_right',
+                    override_colour='#7676B2', 
+                    size=10
+                )
+            ],
+        ),
+        widget.OpenWeather(
+            app_key='50dfe3c4af787e95cfb00325885f0019',
+            font="JetBrains Mono Bold",
+            background='#52548D',
+            cityid=3076586,
+            format='{icon}  {main_temp}°{units_temperature}'
+        ),
+        widget.Spacer(
+            length=15,
+            background='#52548D',
+        ),
+        widget.TextBox(
+            text="",
+            font="Font Awesome 6 Free Solid",
+            fontsize=13,
+            padding=2,
+            background='#52548D',
+        ),
+        widget.CheckUpdates(
+            font="JetBrains Mono Bold",
+            background='#52548D',
+            display_format='{updates}',
+            distro='Arch_checkupdates'
+        ),
+        widget.Spacer(
+            length=15,
+            background='#52548D',
+        ),
+        widget.TextBox(
+            text="",
+            font="Font Awesome 6 Free Solid",
+            fontsize=13,
+            padding=0,
+            background='#52548D',
+        ),
+        widget.Memory(format='{MemUsed: .0f}{mm}',
+            font="JetBrains Mono Bold",
+            fontsize=12,
+            padding=10,
+            background='#52548D',
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_right',
+                    override_colour='#52548D', 
+                    size=10
+                )
+            ],
+        ),
+        widget.TextBox(
+            text="",
+            font="Font Awesome 6 Free Solid",
+            fontsize=13,
+            padding=0,
+            background='#4B427E',
+        ),
+        widget.PulseVolume(
+            font='JetBrains Mono Bold',
+            fontsize=12,
+            padding=10,
+            background='#4B427E',
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_right',
+                    override_colour='#4B427E', 
+                    size=10
+                )
+            ],
+        ),
+        widget.TextBox(
+            text="",
+            font="Font Awesome 6 Free Solid",
+            fontsize=13,
+            padding=0,
+            background='#1F1D2E',
+        ),
+        widget.Clock(
+            format='%I:%M %p',
+            padding=10,
+            background='#1F1D2E',
+            font="JetBrains Mono Bold",
+        ),
+        widget.Spacer(
+            length=10,
+            background='#1F1D2E',
+        )
+    ]
     return widgets_list
 
 widgets_list = init_widgets_list()
