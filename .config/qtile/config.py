@@ -1,12 +1,10 @@
 import os
-import re
-import socket
 import subprocess
-from typing import List  # noqa: F401
-from libqtile import layout, bar, widget, hook, qtile
-from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
+from libqtile import layout, bar, widget, hook 
+from libqtile.config import Drag, Group, Key, Match, Screen
 from libqtile.command import lazy
-from libqtile.widget import Spacer
+from qtile_extras import widget
+from qtile_extras.widget.decorations import PowerLineDecoration
 
 #mod4 or mod = super key
 mod = "mod4"
@@ -37,7 +35,7 @@ keys = [
     Key([mod], "F4", lazy.spawn("discord")),
 
 # SUPER + ... KEYS
-    Key([mod], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
+    Key([mod], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'FiraCode:bold:pixelsize=14'")),
     Key([mod], "return", lazy.spawn(myTerm)),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
@@ -106,24 +104,6 @@ keys = [
 # TOGGLE FLOATING LAYOUT
     Key([mod, "shift"], "space", lazy.window.toggle_floating()),]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 groups = [Group(f"{i+1}", label="") for i in range(8)]
 
 for i in groups:
@@ -138,7 +118,7 @@ for i in groups:
     ])
 
 def init_layout_theme():
-    return {"margin":10,
+    return {"margin":15,
             "border_width":1,
             "border_focus": "#ff00ff",
             "border_normal": "#f4c2c2"
@@ -189,48 +169,34 @@ def base(fg='text', bg='dark'):
 
 # WIDGETS FOR THE BAR
 def init_widgets_defaults():
-    return dict(font="Noto Sans Mono",
-                fontsize = 12,
-                padding = 3,
-                background=colors[1])
+    return dict(
+        font="Fira Code",
+        fontsize = 12,
+        padding = 3,
+    )
 
 widget_defaults = init_widgets_defaults()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def init_widgets_list():
     widgets_list = [
-               widget.Spacer(length=20,
+                widget.Spacer(
+                    length=10,
                     background='#1F1D2E',
                 ),
-
-
                 widget.Image(
                     filename='~/.config/qtile/Assets/launch_Icon.png',
                     margin=2,
                     background='#1F1D2E',
+                    decorations = [
+                        PowerLineDecoration(
+                            path='rounded_left',
+                            override_colour='#1F1D2E', 
+                            size=10
+                        )
+                    ],
                 ),
-
-                widget.Image(
-                    filename='~/.config/qtile/Assets/6.png',
-                ),
-
                 widget.GroupBox(
-                     fontsize=16,
+                    fontsize=16,
                     borderwidth=3,
                     highlight_method='block',
                     active='#7F61A7',
@@ -246,51 +212,56 @@ def init_widgets_list():
                     urgent_border='#52548D',
                     rounded=True,
                     disable_drag=True,
+                    decorations = [
+                        PowerLineDecoration(
+                            path='rounded_left',
+                            override_colour='#4B427E', 
+                            size=10
+                        )
+                    ],
                  ),
-
-                widget.Image(
-                    filename='~/.config/qtile/Assets/5.png',
-                ),
-
                 widget.CurrentLayoutIcon(
                     background='#52548D',
                     padding = 0,
                     scale = 0.5,
                 ),
-
-                    widget.CurrentLayout(
+                widget.CurrentLayout(
                     background='#52548D',
                     font= 'JetBrains Mono Bold',
+                    decorations = [
+                        PowerLineDecoration(
+                            path='rounded_left',
+                            override_colour='#52548D', 
+                            size=10
+                        )
+                    ],
                 ),
-
-                widget.Image(
-                    filename='~/.config/qtile/Assets/4.png',
-                ),
-
                 widget.WindowName(
                     background = '#7676B2',
                     format = "{name}",
                     font='JetBrains Mono Bold',
                     empty_group_string = 'Desktop',
+                    decorations = [
+                        PowerLineDecoration(
+                            path='rounded_right',
+                            override_colour='#7676B2', 
+                            size=10
+                        )
+                    ],
                 ),
-
-                widget.Image(
-                    filename='~/.config/qtile/Assets/3.png',
-                ),
-
                 widget.Memory(format='﬙{MemUsed: .0f}{mm}',
                     font="JetBrains Mono Bold",
                     fontsize=12,
                     padding=10,
                     background='#52548D',
+                    decorations = [
+                        PowerLineDecoration(
+                            path='rounded_right',
+                            override_colour='#52548D', 
+                            size=10
+                        )
+                    ],
                 ),
-
-                widget.Image(
-                    filename='~/.config/qtile/Assets/2.png',
-                    background='#52548D',
-                ),
-
-
                 widget.TextBox(
                     text="",
                     font="Font Awesome 6 Free Solid",
@@ -298,30 +269,28 @@ def init_widgets_list():
                     padding=0,
                     background='#4B427E',
                 ),
-
-                widget.PulseVolume(font='JetBrains Mono Bold',
+                widget.PulseVolume(
+                    font='JetBrains Mono Bold',
                     fontsize=12,
                     padding=10,
                     background='#4B427E',
+                    decorations = [
+                        PowerLineDecoration(
+                            path='rounded_right',
+                            override_colour='#4B427E', 
+                            size=10
+                        )
+                    ],
                 ),
-
-
-                widget.Image(
-                    filename='~/.config/qtile/Assets/1.png',
-                    background='#4B427E',
-                ),
-
                 widget.Clock(
                     format='  %I:%M %p',
                     background='#1F1D2E',
                     font="JetBrains Mono Bold",
                 ),
-
                 widget.Spacer(
-                    length=18,
+                    length=10,
                     background='#1F1D2E',
                 )
-
               ]
     return widgets_list
 
@@ -339,21 +308,9 @@ widgets_screen1 = init_widgets_screen1()
 widgets_screen2 = init_widgets_screen2()
 
 def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=20, opacity=0.85, background="000000", margin=[8,8,0,8])),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=20, opacity=0.85, background="000000", margin=[8,8,0,8]))]
+    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=30, opacity=0.85, background="000000", margin=[10,15,-3,15])),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=30, opacity=0.85, background="000000", margin=[10,15,-3,15]))]
 screens = init_screens()
-
-
-
-
-
-
-
-
-
-
-
-
 
 # MOUSE CONFIGURATION
 mouse = [
