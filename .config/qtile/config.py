@@ -6,11 +6,11 @@ from libqtile.command import lazy
 from qtile_extras import widget
 from qtile_extras.widget.decorations import PowerLineDecoration
 
-#mod4 or mod = super key
-mod = "mod4"
+home = os.path.expanduser('~')
+mod = "mod4" # super key
 mod1 = "alt"
 mod2 = "control"
-home = os.path.expanduser('~')
+myTerm = "alacritty"
 
 @lazy.function
 def window_to_prev_group(qtile):
@@ -24,16 +24,12 @@ def window_to_next_group(qtile):
         i = qtile.groups.index(qtile.currentGroup)
         qtile.currentWindow.togroup(qtile.groups[i + 1].name)
 
-myTerm = "alacritty" # My terminal of choice
-
 keys = [
-
 # SUPER + FUNCTION KEYS
     Key([mod], "F1", lazy.spawn("brave")),
     Key([mod], "F2", lazy.spawn("code")),
     Key([mod], "F3", lazy.spawn("spotify")),
     Key([mod], "F4", lazy.spawn("discord")),
-
 # SUPER + ... KEYS
     Key([mod], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'FiraCode:bold:pixelsize=14'")),
     Key([mod], "return", lazy.spawn(myTerm)),
@@ -42,91 +38,74 @@ keys = [
     Key([mod], "x", lazy.shutdown()),
     Key([mod], "period", lazy.next_screen()),
     Key([mod], "comma", lazy.prev_screen()),
-
 # SUPER + SHIFT KEYS
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "shift"], "x", lazy.shutdown()),
-
 # CONTROL + ALT KEYS
     Key(["mod1", "control"], "u", lazy.spawn('pavucontrol')),
-
 # ALT + ... KEYS
     Key(["mod1"], "w", lazy.spawn('garuda-welcome')),
-
 # CONTROL + SHIFT KEYS
     Key([mod2, "shift"], "Escape", lazy.spawn('lxtask')),
-
 # MEDIA KEYS
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 -q set Master 2dB+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 -q set Master 2dB-")),
-
 # SCREENSHOTS
     Key([], "Print", lazy.spawn('flameshot gui')),
     Key([mod2], "Print", lazy.spawn('flameshot full -p ' + home + '/Pictures')),
-
 # QTILE LAYOUT KEYS
     Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "space", lazy.next_layout()),
-
 # CHANGE FOCUS
     Key([mod], "k", lazy.layout.up()),
     Key([mod], "j", lazy.layout.down()),
     Key([mod], "h", lazy.layout.left()),
     Key([mod], "l", lazy.layout.right()),
-
 # RESIZE UP, DOWN, LEFT, RIGHT
     Key([mod, mod2], "h", lazy.layout.shrink(), lazy.layout.decrease_nmaster()),
     Key([mod, mod2], "l", lazy.layout.grow(), lazy.layout.increase_nmaster()),
-
 # FLIP LAYOUT FOR MONADTALL/MONADWIDE
     Key([mod, "shift"], "f", lazy.layout.flip()),
-
 # FLIP LAYOUT FOR BSP
     Key([mod, "mod1"], "k", lazy.layout.flip_up()),
     Key([mod, "mod1"], "j", lazy.layout.flip_down()),
     Key([mod, "mod1"], "l", lazy.layout.flip_right()),
     Key([mod, "mod1"], "h", lazy.layout.flip_left()),
-
 # MOVE WINDOWS UP OR DOWN BSP LAYOUT
     Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
     Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
     Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
-
 # MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
     Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
     Key([mod, "shift"], "h", lazy.layout.swap_left()),
     Key([mod, "shift"], "l", lazy.layout.swap_right()),
-
 # TOGGLE FLOATING LAYOUT
-    Key([mod, "shift"], "space", lazy.window.toggle_floating()),]
+    Key([mod, "shift"], "space", lazy.window.toggle_floating())
+]
 
 groups = [Group(f"{i+1}", label="") for i in range(8)]
 
 for i in groups:
     keys.extend([
-
 #CHANGE WORKSPACES
         Key([mod], i.name, lazy.group[i.name].toscreen()),
         Key(["mod1", "shift"], "Tab", lazy.screen.prev_group()),
-
 # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND FOLLOW MOVED WINDOW TO WORKSPACE
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen()),
     ])
 
-def init_layout_theme():
-    return {"margin":15,
-            "border_width":1,
-            "border_focus": "#ff00ff",
-            "border_normal": "#f4c2c2"
-            }
+layout_theme={
+    "margin": 15,
+    "border_width":1,
+    "border_focus": "#ff00ff",
+    "border_normal": "#f4c2c2"
+}
 
-layout_theme = init_layout_theme()
-
-layouts = [
+layouts=[
     layout.MonadTall(**layout_theme),
     layout.MonadWide(**layout_theme),
     layout.Matrix(**layout_theme),
@@ -164,21 +143,18 @@ def init_colors():
 
 colors = init_colors()
 
-def base(fg='text', bg='dark'):
-    return {'foreground': colors[14],'background': colors[15]}
-
 # WIDGETS FOR THE BAR
 def init_widgets_defaults():
     return dict(
         font="Fira Code",
-        fontsize = 12,
-        padding = 3,
+        fontsize=12,
+        padding=3,
     )
 
-widget_defaults = init_widgets_defaults()
+widget_defaults=init_widgets_defaults()
 
 def init_widgets_list():
-    widgets_list = [
+    widgets_list=[
         widget.Spacer(
             length=10,
             background='#1F1D2E',
@@ -350,78 +326,60 @@ def init_widgets_screen2():
 widgets_screen1 = init_widgets_screen1()
 widgets_screen2 = init_widgets_screen2()
 
-def init_screens():
-    return [Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=30, opacity=0.85, background="000000", margin=[10,15,-3,15])),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=30, opacity=0.85, background="000000", margin=[10,15,-3,15]))]
-screens = init_screens()
+screens=[
+    Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=30, opacity=0.85, margin=[10,15,-3,15])),
+    Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=30, opacity=0.85, margin=[10,15,-3,15]))
+]
 
 # MOUSE CONFIGURATION
-mouse = [
+mouse=[
     Drag([mod], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(),
          start=lazy.window.get_size())
 ]
 
-dgroups_key_binder = None
-dgroups_app_rules = []
-
+dgroups_key_binder=None
+dgroups_app_rules=[]
 main = None
 
 @hook.subscribe.startup_once
 def start_once():
-    home = os.path.expanduser('~')
+    home=os.path.expanduser('~')
     subprocess.call([home + '/.config/qtile/autostart.sh'])
 
-@hook.subscribe.startup
-def start_always():
-    # Set the cursor to something sane in X
-    subprocess.Popen(['xsetroot', '-cursor_name', 'left_ptr'])
+follow_mouse_focus=True
+bring_front_click=False
+cursor_warp=False
 
-@hook.subscribe.client_new
-def set_floating(window):
-    if (window.window.get_wm_transient_for()
-            or window.window.get_wm_type() in floating_types):
-        window.floating = True
-
-floating_types = ["notification", "toolbar", "splash", "dialog"]
-
-follow_mouse_focus = True
-bring_front_click = False
-cursor_warp = False
-floating_layout = layout.Floating(float_rules=[
-    *layout.Floating.default_float_rules,
-    Match(wm_class='confirm'),
-    Match(wm_class='dialog'),
-    Match(wm_class='download'),
-    Match(wm_class='error'),
-    Match(wm_class='file_progress'),
-    Match(wm_class='notification'),
-    Match(wm_class='splash'),
-    Match(wm_class='toolbar'),
-    Match(wm_class='confirmreset'),
-    Match(wm_class='makebranch'),
-    Match(wm_class='maketag'),
-    Match(wm_class='Arandr'),
-    Match(wm_class='feh'),
-    Match(wm_class='Galculator'),
-    Match(title='branchdialog'),
-    Match(title='Open File'),
-    Match(title='pinentry'),
-    Match(wm_class='ssh-askpass'),
-    Match(wm_class='lxpolkit'),
-    Match(wm_class='Lxpolkit'),
-    Match(wm_class='yad'),
-    Match(wm_class='Yad'),
-    Match(wm_class='Cairo-dock'),
-    Match(wm_class='cairo-dock'),
-],  
-
-fullscreen_border_width = 0, border_width = 0)
+floating_layout=layout.Floating(
+    float_rules=[
+        *layout.Floating.default_float_rules,
+        Match(wm_class='confirm'),
+        Match(wm_class='dialog'),
+        Match(wm_class='download'),
+        Match(wm_class='error'),
+        Match(wm_class='file_progress'),
+        Match(wm_class='notification'),
+        Match(wm_class='splash'),
+        Match(wm_class='toolbar'),
+        Match(wm_class='confirmreset'),
+        Match(wm_class='makebranch'),
+        Match(wm_class='maketag'),
+        Match(wm_class='Arandr'),
+        Match(wm_class='feh'),
+        Match(wm_class='Galculator'),
+        Match(title='branchdialog'),
+        Match(title='Open File'),
+        Match(title='pinentry'),
+        Match(wm_class='ssh-askpass'),
+        Match(wm_class='lxpolkit'),
+        Match(wm_class='yad'),
+    ]
+)
 
 auto_fullscreen = True
 auto_minimize = True
-
 focus_on_window_activation = "smart" 
 
 wmname = "LG3D"
