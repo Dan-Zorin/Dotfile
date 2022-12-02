@@ -32,13 +32,15 @@ keys = [
     Key([mod], "F3", lazy.spawn("spotify")),
     Key([mod], "F4", lazy.spawn("discord")),
 # SUPER + ... KEYS
-    Key([mod], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'FiraCode:bold:pixelsize=14'")),
+    Key([mod], "d", lazy.spawn("dmenu_run -i -nb '#1F1D2E' -nf '#fff' -sb '#8D85CB' -sf '#fff' -fn 'FiraCode:bold:pixelsize=16'")),
+    Key([mod], "v", lazy.spawn("rofi -show drun")),
+    Key([mod], "period", lazy.spawn("rofi -show emoji")),
     Key([mod], "return", lazy.spawn(myTerm)),
+    Key([mod], "m", lazy.spawn(f"{myTerm} -e ranger /home/ton1czech")),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "x", lazy.shutdown()),
-    Key([mod], "period", lazy.next_screen()),
-    Key([mod], "comma", lazy.prev_screen()),
+    Key([mod], "comma", lazy.next_screen()),
 # SUPER + SHIFT KEYS
     Key([mod, "shift"], "r", lazy.restart()),
 # CONTROL + ALT KEYS
@@ -172,7 +174,7 @@ def init_widgets_list():
             background='#7676B2',
             format="{name}",
             font='JetBrains Mono Bold',
-            empty_group_string = 'Desktop',
+            empty_group_string = '',
             decorations=[
                 PowerLineDecoration(
                     path='rounded_right',
@@ -261,10 +263,6 @@ def init_widgets_list():
             padding=10,
             background='#1F1D2E',
             font="JetBrains Mono Bold",
-        ),
-        widget.Spacer(
-            length=10,
-            background='#1F1D2E',
         )
     ]
     return widgets_list
