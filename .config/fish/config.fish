@@ -1,13 +1,17 @@
-﻿## Set values
+## Set values
 # Hide welcome message
 set fish_greeting
 set VIRTUAL_ENV_DISABLE_PROMPT "1"
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
+## Export variable need for qt-theme
+if type "qtile" >> /dev/null 2>&1
+   set -x QT_QPA_PLATFORMTHEME "qt5ct"
+end
+
 # Set settings for https://github.com/franciscolourenco/done
 set -U __done_min_cmd_duration 10000
 set -U __done_notification_urgency_level low
-
 
 ## Environment setup
 # Apply .profile: use this to put fish compatible .profile stuff in
@@ -29,12 +33,13 @@ if test -d ~/Applications/depot_tools
     end
 end
 
-
 ## Starship prompt
 if status --is-interactive
    source ("/usr/bin/starship" init fish --print-full-init | psub)
 end
 
+## Advanced command-not-found hook
+source /usr/share/doc/find-the-command/ftc.fish
 
 ## Functions
 # Functions needed for !! and !$ https://github.com/oh-my-fish/plugin-bang-bang
@@ -86,43 +91,33 @@ function copy
     end
 end
 
-## Import colorscheme from 'wal' asynchronously
-if type "wal" >> /dev/null 2>&1
-   cat ~/.cache/wal/sequences
-end
-
 ## Useful aliases
 # Replace ls with exa
 alias ls='exa -al --color=always --group-directories-first --icons' # preferred listing
 alias lt='exa -aT --color=always --group-directories-first --icons' # tree listing
 
 # Replace some more things with better alternatives
-alias cat='bat --style header --style rules --style snip --style changes --style header'
 [ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'
 
 # Common use
+alias grubup="sudo update-grub"
 alias tarnow='tar -acf '
-alias untar='tar -zxvf '
+alias untar='tar -xvf '
 alias wget='wget -c '
 alias ..='cd ..'
 alias ...='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
-
-# changing "ls" to "exa"
-alias ls='exa -lah --color=always --group-directories-first'
-alias lt='exa -aT --color=always --group-directories-first'
-
-# colorize grep output (good for log files)
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 # quick jump
-alias tut='cd /mnt/TOSHIBA300/CODING/tutorials/'
-
-alias pts='cd /mnt/TOSHIBA300/CODING/projects/'
+alias tut='cd ~/Coding/tutorials/'
+alias pts='cd ~/Coding/projects/'
 
 # custom git
 alias gaa='git add .'
@@ -145,6 +140,10 @@ end
 
 alias gpp='git push -u origin master'
 
+function gll
+    git clone https://github.com/$argv
+end
+
 # Create new dir and cd into it
 function mkcd -d "Create a directory and set CWD"
     command mkdir $argv
@@ -159,8 +158,7 @@ function mkcd -d "Create a directory and set CWD"
     end
 end
 
-
-## Run paleofetch if session is interactive
-if status --is-interactive
-   neofetch
+## Run fastfetch if session is interactive
+if status --is-interactive && type -q fastfetch
+   fastfetch --load-config neofetch
 end
