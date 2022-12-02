@@ -32,7 +32,7 @@ keys = [
     Key([mod], "F3", lazy.spawn("spotify")),
     Key([mod], "F4", lazy.spawn("discord")),
 # SUPER + ... KEYS
-    Key([mod], "d", lazy.spawn("dmenu_run -i -nb '#1F1D2E' -nf '#fff' -sb '#8D85CB' -sf '#fff' -fn 'Satoshi:bold:pixelsize=16'")),
+    Key([mod], "d", lazy.spawn("dmenu_run -i -nb '#181825' -nf '#fff' -sb '#7E6EC4' -sf '#fff' -fn 'Satoshi:semibold:pixelsize=16'")),
     Key([mod], "v", lazy.spawn("rofi -show drun")),
     Key([mod], "period", lazy.spawn("rofi -show emoji")),
     Key([mod], "return", lazy.spawn(myTerm)),
@@ -93,8 +93,8 @@ for i in groups:
 layout_theme={
     "margin": 15,
     "border_width":1,
-    "border_focus": "#ff00ff",
-    "border_normal": "#f4c2c2"
+    "border_focus": "#FF00FF",
+    "border_normal": "#45475A"
 }
 
 layouts=[
@@ -109,7 +109,7 @@ layouts=[
 # WIDGETS FOR THE BAR
 def init_widgets_defaults():
     return dict(
-        font="Fira Code",
+        font="Satoshi Black",
         fontsize=12,
         padding=3,
     )
@@ -117,117 +117,127 @@ def init_widgets_defaults():
 widget_defaults=init_widgets_defaults()
 extension_defaults=[ widget_defaults.copy()]
 
+colors={
+    'night': '#181825',
+    'dark': '#322B54',
+    'medium': '#5F5399',
+    'light': '#7E6EC4',
+    'sat': '#CBA6f7',
+    'dim': '#796296'
+}
+
+roundness=10
+
 def init_widgets_list():
     widgets_list=[
         widget.Spacer(
             length=10,
-            background='#1F1D2E',
+            background=colors["night"],
         ),
         widget.Image(
             filename='~/.config/qtile/Assets/launch_Icon.png',
             margin=2,
-            background='#1F1D2E',
+            background=colors["night"],
             decorations=[
                 PowerLineDecoration(
                     path='rounded_left',
-                    override_colour='#1F1D2E', 
-                    size=10
+                    override_colour=colors["night"], 
+                    size=roundness
                 )
             ],
         ),
         widget.GroupBox(
-            font='Font Awesome 6 Free Solid',
-            fontsize=17,
-            borderwidth=2,
+            fontsize=16,
+            borderwidth=1,
             highlight_method='text',
-            background='#4B427E',
-            active='#7F61A7',
-            inactive='#52548D',
-            this_current_screen_border='#BD85CB',
-            rounded=True,
+            background=colors["dark"],
+            active=colors["dim"],
+            inactive=colors["medium"],
+            this_current_screen_border=colors["sat"],
             disable_drag=True,
             decorations=[
                 PowerLineDecoration(
                     path='rounded_left',
-                    override_colour='#4B427E', 
-                    size=10
+                    override_colour=colors["dark"], 
+                    size=roundness
                 )
             ],
             ),
         widget.CurrentLayoutIcon(
-            background='#52548D',
+            background=colors["medium"],
             padding=0,
             scale=0.5,
         ),
         widget.CurrentLayout(
-            background='#52548D',
-            font='JetBrains Mono Bold',
+            background=colors["medium"],
+            font='Satoshi Bold',
             decorations=[
                 PowerLineDecoration(
                     path='rounded_left',
-                    override_colour='#52548D', 
-                    size=10
+                    override_colour=colors["medium"], 
+                    size=roundness
                 )
             ],
         ),
+        widget.Spacer(
+            length=3,
+            background=colors["light"],
+        ),
         widget.WindowName(
-            background='#7676B2',
+            background=colors["light"],
             format="{name}",
-            font='JetBrains Mono Bold',
             empty_group_string = '',
             decorations=[
                 PowerLineDecoration(
                     path='rounded_right',
-                    override_colour='#7676B2', 
-                    size=10
+                    override_colour=colors["light"], 
+                    size=roundness
                 )
             ],
         ),
         widget.OpenWeather(
             app_key='50dfe3c4af787e95cfb00325885f0019',
-            font="JetBrains Mono Bold",
-            background='#52548D',
+            background=colors["medium"],
             cityid=3076586,
             format='{icon}  {main_temp}°{units_temperature}'
         ),
         widget.Spacer(
-            length=15,
-            background='#52548D',
+            length=10,
+            background=colors["medium"],
         ),
         widget.TextBox(
             text="",
             font="Font Awesome 6 Free Solid",
             fontsize=13,
-            padding=2,
-            background='#52548D',
+            background=colors["medium"],
         ),
         widget.CheckUpdates(
-            font="JetBrains Mono Bold",
-            background='#52548D',
+            background=colors["medium"],
             display_format='{updates}',
             distro='Arch_checkupdates'
         ),
         widget.Spacer(
-            length=15,
-            background='#52548D',
+            length=10,
+            background=colors["medium"],
         ),
         widget.TextBox(
             text="",
             font="Font Awesome 6 Free Solid",
             fontsize=13,
-            padding=0,
-            background='#52548D',
+            background=colors["medium"],
         ),
         widget.Memory(format='{MemUsed: .0f}{mm}',
-            font="JetBrains Mono Bold",
             fontsize=12,
-            padding=10,
-            background='#52548D',
+            background=colors["medium"],
+        ),
+        widget.Spacer(
+            length=5,
+            background=colors["medium"],
             decorations=[
                 PowerLineDecoration(
                     path='rounded_right',
-                    override_colour='#52548D', 
-                    size=10
+                    override_colour=colors["medium"], 
+                    size=roundness
                 )
             ],
         ),
@@ -235,19 +245,20 @@ def init_widgets_list():
             text="",
             font="Font Awesome 6 Free Solid",
             fontsize=13,
-            padding=0,
-            background='#4B427E',
+            background=colors["dark"],
         ),
         widget.PulseVolume(
-            font='JetBrains Mono Bold',
             fontsize=12,
-            padding=10,
-            background='#4B427E',
+            background=colors["dark"],
+        ),
+        widget.Spacer(
+            length=5,
+            background=colors["dark"],
             decorations=[
                 PowerLineDecoration(
                     path='rounded_right',
-                    override_colour='#4B427E', 
-                    size=10
+                    override_colour=colors["dark"], 
+                    size=roundness
                 )
             ],
         ),
@@ -256,13 +267,12 @@ def init_widgets_list():
             font="Font Awesome 6 Free Solid",
             fontsize=13,
             padding=0,
-            background='#1F1D2E',
+            background=colors["night"],
         ),
         widget.Clock(
             format='%I:%M %p',
             padding=10,
-            background='#1F1D2E',
-            font="JetBrains Mono Bold",
+            background=colors["night"],
         )
     ]
     return widgets_list
