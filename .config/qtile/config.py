@@ -52,7 +52,7 @@ keys = [
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 -q set Master 2dB-")),
 # SCREENSHOTS
     Key([], "Print", lazy.spawn('flameshot gui')),
-    Key(["control"], "Print", lazy.spawn('flameshot full -p ' + home + '/Pictures')),
+    Key(["control"], "Print", lazy.spawn('flameshot screen -n 1 -p ' + home + '/Pictures')),
 # QTILE LAYOUT KEYS
     Key([mod], "space", lazy.next_layout()),
 # CHANGE FOCUS
