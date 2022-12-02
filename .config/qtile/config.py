@@ -77,13 +77,12 @@ keys = [
     Key([mod, "shift"], "l", lazy.layout.swap_right()),
 ]
 
-groups = [Group(f"{i+1}", label="") for i in range(8)]
+groups = [Group(f"{i+1}", label="") for i in range(5)]
 
 for i in groups:
     keys.extend([
 #CHANGE WORKSPACES
         Key([mod], i.name, lazy.group[i.name].toscreen()),
-        Key(["mod1", "shift"], "Tab", lazy.screen.prev_group()),
 # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND FOLLOW MOVED WINDOW TO WORKSPACE
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen()),
     ])
@@ -114,6 +113,7 @@ def init_widgets_defaults():
     )
 
 widget_defaults=init_widgets_defaults()
+extension_defaults=[ widget_defaults.copy()]
 
 def init_widgets_list():
     widgets_list=[
@@ -134,20 +134,14 @@ def init_widgets_list():
             ],
         ),
         widget.GroupBox(
-            fontsize=16,
-            borderwidth=3,
-            highlight_method='block',
-            active='#7F61A7',
-            block_highlight_text_color="#CFB3E5",
-            highlight_color='#4B427E',
-            inactive='#BD85CB',
-            foreground='#4B427E',
+            font='Font Awesome 6 Free Solid',
+            fontsize=17,
+            borderwidth=2,
+            highlight_method='text',
             background='#4B427E',
-            this_current_screen_border='#52548D',
-            this_screen_border='#52548D',
-            other_current_screen_border='#52548D',
-            other_screen_border='#52548D',
-            urgent_border='#52548D',
+            active='#7F61A7',
+            inactive='#52548D',
+            this_current_screen_border='#BD85CB',
             rounded=True,
             disable_drag=True,
             decorations=[
