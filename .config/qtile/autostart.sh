@@ -11,6 +11,7 @@ function run {
 lxsession &
 xrandr --output DVI-D-0 --mode 1920x1080 -r 144 &
 xrandr --output DP-0 --mode 2560x1440 --primary -r 144 &
+qtile cmd-obj -o cmd -f restart
 nitrogen --restore
 picom --config $HOME/.config/picom/picom.conf --experimental-backends &
 run nm-applet &
