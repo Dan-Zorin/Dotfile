@@ -6,11 +6,12 @@ from libqtile.command import lazy
 from qtile_extras import widget
 from qtile_extras.widget.decorations import PowerLineDecoration
 
-home = os.path.expanduser('~')
-mod = "mod4" # super key
-mod1 = "alt"
-mod2 = "control"
-myTerm = "alacritty"
+home=os.path.expanduser('~')
+mod="mod4" # super key
+alt="mod1"
+myTerm="alacritty"
+myBrowser="brave"
+myIDE="code"
 
 @lazy.function
 def window_to_prev_group(qtile):
@@ -26,8 +27,8 @@ def window_to_next_group(qtile):
 
 keys = [
 # SUPER + FUNCTION KEYS
-    Key([mod], "F1", lazy.spawn("brave")),
-    Key([mod], "F2", lazy.spawn("code")),
+    Key([mod], "F1", lazy.spawn(myBrowser)),
+    Key([mod], "F2", lazy.spawn(myIDE)),
     Key([mod], "F3", lazy.spawn("spotify")),
     Key([mod], "F4", lazy.spawn("discord")),
 # SUPER + ... KEYS
@@ -39,24 +40,20 @@ keys = [
     Key([mod], "period", lazy.next_screen()),
     Key([mod], "comma", lazy.prev_screen()),
 # SUPER + SHIFT KEYS
-    Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
-    Key([mod, "control"], "r", lazy.restart()),
-    Key([mod, "shift"], "x", lazy.shutdown()),
 # CONTROL + ALT KEYS
-    Key(["mod1", "control"], "u", lazy.spawn('pavucontrol')),
+    Key([alt, "control"], "u", lazy.spawn('pavucontrol')),
 # ALT + ... KEYS
-    Key(["mod1"], "w", lazy.spawn('garuda-welcome')),
+    Key([alt], "w", lazy.spawn('garuda-welcome')),
 # CONTROL + SHIFT KEYS
-    Key([mod2, "shift"], "Escape", lazy.spawn('lxtask')),
+    Key(["control", "shift"], "Escape", lazy.spawn('lxtask')),
 # MEDIA KEYS
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 -q set Master 2dB+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 -q set Master 2dB-")),
 # SCREENSHOTS
     Key([], "Print", lazy.spawn('flameshot gui')),
-    Key([mod2], "Print", lazy.spawn('flameshot full -p ' + home + '/Pictures')),
+    Key(["control"], "Print", lazy.spawn('flameshot full -p ' + home + '/Pictures')),
 # QTILE LAYOUT KEYS
-    Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "space", lazy.next_layout()),
 # CHANGE FOCUS
     Key([mod], "k", lazy.layout.up()),
@@ -64,27 +61,20 @@ keys = [
     Key([mod], "h", lazy.layout.left()),
     Key([mod], "l", lazy.layout.right()),
 # RESIZE UP, DOWN, LEFT, RIGHT
-    Key([mod, mod2], "h", lazy.layout.shrink(), lazy.layout.decrease_nmaster()),
-    Key([mod, mod2], "l", lazy.layout.grow(), lazy.layout.increase_nmaster()),
+    Key([mod, "control"], "h", lazy.layout.shrink(), lazy.layout.decrease_nmaster()),
+    Key([mod, "control"], "l", lazy.layout.grow(), lazy.layout.increase_nmaster()),
 # FLIP LAYOUT FOR MONADTALL/MONADWIDE
     Key([mod, "shift"], "f", lazy.layout.flip()),
 # FLIP LAYOUT FOR BSP
-    Key([mod, "mod1"], "k", lazy.layout.flip_up()),
-    Key([mod, "mod1"], "j", lazy.layout.flip_down()),
-    Key([mod, "mod1"], "l", lazy.layout.flip_right()),
-    Key([mod, "mod1"], "h", lazy.layout.flip_left()),
-# MOVE WINDOWS UP OR DOWN BSP LAYOUT
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right()),
+    Key([mod, alt], "k", lazy.layout.flip_up()),
+    Key([mod, alt], "j", lazy.layout.flip_down()),
+    Key([mod, alt], "l", lazy.layout.flip_right()),
+    Key([mod, alt], "h", lazy.layout.flip_left()),
 # MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
     Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
     Key([mod, "shift"], "h", lazy.layout.swap_left()),
     Key([mod, "shift"], "l", lazy.layout.swap_right()),
-# TOGGLE FLOATING LAYOUT
-    Key([mod, "shift"], "space", lazy.window.toggle_floating())
 ]
 
 groups = [Group(f"{i+1}", label="") for i in range(8)]
@@ -98,6 +88,7 @@ for i in groups:
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen()),
     ])
 
+# LAYOUTS
 layout_theme={
     "margin": 15,
     "border_width":1,
@@ -113,35 +104,6 @@ layouts=[
     layout.Floating(**layout_theme),
     layout.Columns(**layout_theme),
 ]
-
-# COLORS FOR THE BAR
-def init_colors():
-    return [["#2F343F", "#2F343F"], # color 0
-            ["#2F343F", "#2F343F"], # color 1
-            ["#c0c5ce", "#c0c5ce"], # color 2
-            ["#ff5050", "#ff5050"], # color 3
-            ["#f4c2c2", "#f4c2c2"], # color 4
-            ["#ffffff", "#ffffff"], # color 5
-            ["#ffd47e", "#ffd47e"], # color 6
-            ["#62FF00", "#62FF00"], # color 7
-            ["#000000", "#000000"], # color 8
-            ["#c40234", "#c40234"], # color 9
-            ["#6790eb", "#6790eb"], # color 10
-            ["#ff00ff", "#ff00ff"], #11
-            ["#4c566a", "#4c566a"], #12 
-            ["#282c34", "#282c34"], #13
-            ["#212121", "#212121"], #14
-            ["#e75480", "#e75480"], #15 
-            ["#2aa899", "#2aa899"], #16 
-            ["#abb2bf", "#abb2bf"],# color 17
-            ["#81a1c1", "#81a1c1"], #18 
-            ["#56b6c2", "#56b6c2"], #19 
-            ["#b48ead", "#b48ead"], #20 
-            ["#e06c75", "#e06c75"], #21
-            ["#fb9f7f", "#fb9f7f"], #22
-            ["#ffd47e", "#ffd47e"]] #23
-
-colors = init_colors()
 
 # WIDGETS FOR THE BAR
 def init_widgets_defaults():
