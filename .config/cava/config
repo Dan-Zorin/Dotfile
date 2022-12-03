@@ -1,4 +1,4 @@
-# Configuration file for CAVA. Default values are commented out. Use either ';' or '#' for commenting.
+## Configuration file for CAVA. Default values are commented out. Use either ';' or '#' for commenting.
 
 
 [general]
@@ -144,15 +144,14 @@
 # background must also be defined in hex  or remain commented out. 1 = on, 0 = off.
 # You can define as many as 8 different colors. They range from bottom to top of screen
  gradient = 1
- gradient_count = 6
- gradient_color_1 = '#c998da'
- gradient_color_2 = '#be9de2'
- gradient_color_3 = '#b2a3e8'
- gradient_color_4 = '#a6a8ec'
- gradient_color_5 = '#99adf0'
- gradient_color_6 = '#8db2f1'
-; gradient_color_7 = '#37325C'
-;gradient_color_8 = '#cc3333'
+ gradient_color_1 = '#94e2d5'
+ gradient_color_2 = '#89dceb'
+ gradient_color_3 = '#74c7ec'
+ gradient_color_4 = '#89b4fa'
+ gradient_color_5 = '#cba6f7'
+ gradient_color_6 = '#f5c2e7'
+ gradient_color_7 = '#eba0ac'
+ gradient_color_8 = '#f38ba8'
 
 
 
