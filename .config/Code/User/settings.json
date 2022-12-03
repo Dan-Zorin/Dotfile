@@ -1,14 +1,14 @@
 {
   // *************** THEME **************
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Dracula Purple",
+  "workbench.colorTheme": "Catppuccin Mocha",
 
   // *************** FONT **************
   "editor.fontFamily": "'Fira Code', 'Consolas', 'Courier New', monospace",
   "editor.fontLigatures": true,
 
   // *************** BASIC **************
-  "window.title": ".",
+  "window.title": "${dirty}${activeEditorLong}",
   "files.enableTrash": false,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.formatOnSave": true,
@@ -24,9 +24,12 @@
   "workbench.settings.useSplitJSON": true,
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
-  "css.lint.unknownAtRules": "ignore",
   "editor.inlineSuggest.enabled": true,
   "window.zoomLevel": 3,
+
+  // Terminal
+  "terminal.external.linuxExec": "alacritty",
+  "terminal.integrated.shell.linux": "/usr/bin/fish",
 
   // *************** EXTENSIONS **************
   // Live Server
@@ -48,7 +51,7 @@
   "prettier.tabWidth": 2,
 
   // Glass It
-  "glassit.alpha": 230,
+  "glassit.alpha": 220,
 
   // *************** LANGUAGES **************
   // Python
@@ -76,7 +79,8 @@
   // Css
   "[css]": {
     "editor.suggest.insertMode": "replace",
-    "gitlens.codeLens.scopes": ["document"]
+    "gitlens.codeLens.scopes": ["document"],
+    "css.lint.unknownAtRules": "ignore"
   },
 
   // Go
