@@ -1,2 +1,2 @@
-gh https://github.com
-gl https://gitlab.com
+gh https://github.com github
+gl https://gitlab.com gitlab
