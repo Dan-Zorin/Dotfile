@@ -111,7 +111,7 @@ layouts=[
 def init_widgets_defaults():
     return dict(
         font="Satoshi Black",
-        fontsize=12,
+        fontsize=14,
         padding=3,
     )
 
@@ -184,17 +184,49 @@ def init_widgets_list():
             length=3,
             background=colors["light"],
         ),
-        widget.WindowName(
+        # widget.WindowName(
+        #     background=colors["light"],
+        #     format="{name}",
+        #     empty_group_string = '',
+        #     decorations=[
+        #         PowerLineDecoration(
+        #             path='rounded_right',
+        #             override_colour=colors["light"], 
+        #             size=roundness
+        #         )
+        #     ],
+        # ),
+        widget.Spacer(
             background=colors["light"],
-            format="{name}",
-            empty_group_string = '',
             decorations=[
                 PowerLineDecoration(
                     path='rounded_right',
                     override_colour=colors["light"], 
                     size=roundness
                 )
-            ],
+            ]
+        ),
+        widget.Clock(
+            format='%I:%M %p',
+            padding=10,
+            background=colors["night"],
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_left',
+                    override_colour=colors["night"], 
+                    size=roundness
+                )
+            ]
+        ),
+        widget.Spacer(
+            background=colors["light"],
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_right',
+                    override_colour=colors["light"], 
+                    size=roundness
+                )
+            ]
         ),
         widget.OpenWeather(
             app_key='50dfe3c4af787e95cfb00325885f0019',
@@ -245,11 +277,9 @@ def init_widgets_list():
         widget.TextBox(
             text="",
             font="Font Awesome 6 Free Solid",
-            fontsize=13,
             background=colors["dark"],
         ),
         widget.PulseVolume(
-            fontsize=12,
             background=colors["dark"],
         ),
         widget.Spacer(
@@ -264,16 +294,16 @@ def init_widgets_list():
             ],
         ),
         widget.TextBox(
-            text="",
+            text="",
             font="Font Awesome 6 Free Solid",
             fontsize=13,
             padding=0,
             background=colors["night"],
         ),
         widget.Clock(
-            format='%I:%M %p',
             padding=10,
             background=colors["night"],
+            format='%d/%m/%y'
         )
     ]
     return widgets_list
