@@ -1,9 +1,17 @@
 :syntax on
 
+set encoding=UTF-8
+
+:set t_Co=256
+
 :set noerrorbells
 
-:set tabstop=4 softtabstop=4
+:set expandtab
 :set smarttab
+:set tabstop=4 
+:set softtabstop=4
+:set shiftwidth=4
+
 :set smartindent
 :set autoindent
 
@@ -21,21 +29,13 @@
 :set undofile
 
 call plug#begin('~/.vim/plugged')
-
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdtree'
-Plug 'airblade/vim-gitgutter'
-Plug 'valloric/youcompleteme'
-Plug 'kien/ctrlp.vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
-
+    Plug 'wakatime/vim-wakatime'
+	Plug 'tpope/vim-surround'
+    Plug 'frazrepo/vim-rainbow'
+	Plug 'scrooloose/nerdtree'
+    Plug 'ryanoasis/vim-devicons'
+	Plug 'valloric/youcompleteme'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'suan/vim-instant-markdown'
+    Plug 'ap/vim-css-color'
 call plug#end()
-":source%
-":PlugInstall
-
-if executable('rg')
-    let g:rg_derive_root='true'
-endif
-
-let g:ctrpl_use_caching = 0
