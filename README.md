@@ -3,8 +3,8 @@
     <img src='./.config/qtile/assets/logo.png' width='250' height='250' />
     <p>config files for linux operating systems</p>
 
-![Size](https://img.shields.io/github/languages/code-size/ton1czech/inflace-cr.svg)
-![License](https://img.shields.io/github/license/ton1czech/inflace-cr.svg)
+![Size](https://img.shields.io/github/languages/code-size/ton1czech/dotfiles.svg)
+![License](https://img.shields.io/github/license/ton1czech/dotfiles.svg)
 
 </div>
 
