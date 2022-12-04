@@ -129,8 +129,8 @@ colors={
 
 roundness=10
 
-def init_widgets_list():
-    widgets_list=[
+screens=[
+    Screen(top=bar.Bar(widgets=[
         widget.Spacer(
             length=10,
             background=colors["night"],
@@ -186,6 +186,7 @@ def init_widgets_list():
         ),
         widget.Spacer(
             background=colors["light"],
+            length=800,
             decorations=[
                 PowerLineDecoration(
                     path='rounded_right',
@@ -194,10 +195,14 @@ def init_widgets_list():
                 )
             ]
         ),
-        widget.Clock(
-            format='%I:%M %p',
-            padding=10,
+        widget.Spacer(
+            length=90,
             background=colors["night"],
+        ),
+        widget.WindowName(
+            background=colors["night"],
+            format="{name}",
+            max_chars=22,
             decorations=[
                 PowerLineDecoration(
                     path='rounded_left',
@@ -207,6 +212,7 @@ def init_widgets_list():
             ]
         ),
         widget.Spacer(
+            length=550,
             background=colors["light"],
             decorations=[
                 PowerLineDecoration(
@@ -216,11 +222,30 @@ def init_widgets_list():
                 )
             ]
         ),
-        widget.OpenWeather(
-            app_key='50dfe3c4af787e95cfb00325885f0019',
+        widget.TextBox(
+            text="",
+            font="Font Awesome 6 Free Solid",
+            fontsize=13,
             background=colors["medium"],
-            cityid=3076586,
-            format='{icon}  {main_temp}°{units_temperature}'
+        ),
+        widget.CPU(
+            background=colors["medium"],
+            format='{load_percent: .0f}%'
+        ),
+        widget.Spacer(
+            length=10,
+            background=colors["medium"],
+        ),
+        widget.TextBox(
+            text="",
+            font="Font Awesome 6 Free Solid",
+            fontsize=13,
+            background=colors["medium"],
+        ),
+        widget.Memory(
+            measure_mem='G',
+            format='{MemUsed: .1f}{mm}',
+            background=colors["medium"],
         ),
         widget.Spacer(
             length=10,
@@ -238,19 +263,6 @@ def init_widgets_list():
             distro='Arch_checkupdates'
         ),
         widget.Spacer(
-            length=10,
-            background=colors["medium"],
-        ),
-        widget.TextBox(
-            text="",
-            font="Font Awesome 6 Free Solid",
-            fontsize=13,
-            background=colors["medium"],
-        ),
-        widget.Memory(format='{MemUsed: .0f}{mm}',
-            background=colors["medium"],
-        ),
-        widget.Spacer(
             length=5,
             background=colors["medium"],
             decorations=[
@@ -260,6 +272,16 @@ def init_widgets_list():
                     size=roundness
                 )
             ],
+        ),
+        widget.OpenWeather(
+            app_key='50dfe3c4af787e95cfb00325885f0019',
+            background=colors["dark"],
+            cityid=3076586,
+            format='{icon}  {main_temp}°{units_temperature}'
+        ),
+        widget.Spacer(
+            length=10,
+            background=colors["dark"],
         ),
         widget.TextBox(
             text="",
@@ -288,29 +310,219 @@ def init_widgets_list():
             background=colors["night"],
         ),
         widget.Clock(
+            format='%I:%M %p',
+            padding=10,
+            background=colors["night"],
+        ),
+        widget.TextBox(
+            text="",
+            font="Font Awesome 6 Free Solid",
+            fontsize=13,
+            padding=0,
+            background=colors["night"],
+        ),
+        widget.Clock(
             padding=10,
             background=colors["night"],
             format='%d/%m/%y'
-        )
-    ]
-    return widgets_list
+        )], size=30, opacity=0.85, margin=[10,15,-3,15])),
 
-widgets_list = init_widgets_list()
-
-def init_widgets_screen1():
-    widgets_screen1 = init_widgets_list()
-    return widgets_screen1
-
-def init_widgets_screen2():
-    widgets_screen2 = init_widgets_list()
-    return widgets_screen2
-
-widgets_screen1 = init_widgets_screen1()
-widgets_screen2 = init_widgets_screen2()
-
-screens=[
-    Screen(top=bar.Bar(widgets=init_widgets_screen1(), size=30, opacity=0.85, margin=[10,15,-3,15])),
-    Screen(top=bar.Bar(widgets=init_widgets_screen2(), size=30, opacity=0.85, margin=[10,15,-3,15]))
+    Screen(top=bar.Bar(widgets=[
+        widget.Spacer(
+            length=10,
+            background=colors["night"],
+        ),
+        widget.Image(
+            filename='~/.config/qtile/assets/logo.png',
+            margin=2,
+            background=colors["night"],
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_left',
+                    override_colour=colors["night"], 
+                    size=roundness
+                )
+            ],
+        ),
+        widget.GroupBox(
+            fontsize=16,
+            borderwidth=1,
+            highlight_method='text',
+            background=colors["dark"],
+            active=colors["dim"],
+            inactive=colors["medium"],
+            this_current_screen_border=colors["sat"],
+            disable_drag=True,
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_left',
+                    override_colour=colors["dark"], 
+                    size=roundness
+                )
+            ],
+            ),
+        widget.CurrentLayoutIcon(
+            background=colors["medium"],
+            padding=0,
+            scale=0.5,
+        ),
+        widget.CurrentLayout(
+            background=colors["medium"],
+            font='Satoshi Bold',
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_left',
+                    override_colour=colors["medium"], 
+                    size=roundness
+                )
+            ],
+        ),
+        widget.Spacer(
+            length=3,
+            background=colors["light"],
+        ),
+        widget.Spacer(
+            background=colors["light"],
+            length=520,
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_right',
+                    override_colour=colors["light"], 
+                    size=roundness
+                )
+            ]
+        ),
+        widget.Spacer(
+            length=40,
+            background=colors["night"],
+        ),
+        widget.WindowName(
+            background=colors["night"],
+            format="{name}",
+            max_chars=22,
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_left',
+                    override_colour=colors["night"], 
+                    size=roundness
+                )
+            ]
+        ),
+        widget.Spacer(
+            length=300,
+            background=colors["light"],
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_right',
+                    override_colour=colors["light"], 
+                    size=roundness
+                )
+            ]
+        ),
+        widget.TextBox(
+            text="",
+            font="Font Awesome 6 Free Solid",
+            fontsize=13,
+            background=colors["medium"],
+        ),
+        widget.CPU(
+            background=colors["medium"],
+            format='{load_percent: .0f}%'
+        ),
+        widget.Spacer(
+            length=10,
+            background=colors["medium"],
+        ),
+        widget.TextBox(
+            text="",
+            font="Font Awesome 6 Free Solid",
+            fontsize=13,
+            background=colors["medium"],
+        ),
+        widget.Memory(
+            measure_mem='G',
+            format='{MemUsed: .1f}{mm}',
+            background=colors["medium"],
+        ),
+        widget.Spacer(
+            length=10,
+            background=colors["medium"],
+        ),
+        widget.TextBox(
+            text="",
+            font="Font Awesome 6 Free Solid",
+            fontsize=13,
+            background=colors["medium"],
+        ),
+        widget.CheckUpdates(
+            background=colors["medium"],
+            display_format='{updates}',
+            distro='Arch_checkupdates'
+        ),
+        widget.Spacer(
+            length=5,
+            background=colors["medium"],
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_right',
+                    override_colour=colors["medium"], 
+                    size=roundness
+                )
+            ],
+        ),
+        widget.OpenWeather(
+            app_key='50dfe3c4af787e95cfb00325885f0019',
+            background=colors["dark"],
+            cityid=3076586,
+            format='{icon}  {main_temp}°{units_temperature}'
+        ),
+        widget.Spacer(
+            length=10,
+            background=colors["dark"],
+        ),
+        widget.TextBox(
+            text="",
+            font="Font Awesome 6 Free Solid",
+            background=colors["dark"],
+        ),
+        widget.PulseVolume(
+            background=colors["dark"],
+        ),
+        widget.Spacer(
+            length=5,
+            background=colors["dark"],
+            decorations=[
+                PowerLineDecoration(
+                    path='rounded_right',
+                    override_colour=colors["dark"], 
+                    size=roundness
+                )
+            ],
+        ),
+        widget.TextBox(
+            text="",
+            font="Font Awesome 6 Free Solid",
+            fontsize=13,
+            padding=0,
+            background=colors["night"],
+        ),
+        widget.Clock(
+            format='%I:%M %p',
+            padding=10,
+            background=colors["night"],
+        ),
+        widget.TextBox(
+            text="",
+            font="Font Awesome 6 Free Solid",
+            fontsize=13,
+            padding=0,
+            background=colors["night"],
+        ),
+        widget.Clock(
+            padding=10,
+            background=colors["night"],
+            format='%d/%m/%y'
+        )], size=30, opacity=0.85, margin=[10,15,-3,15]))
 ]
 
 # MOUSE CONFIGURATION
