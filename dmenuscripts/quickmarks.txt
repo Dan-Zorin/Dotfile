@@ -1,2 +1,11 @@
 gh https://github.com github
 gl https://gitlab.com gitlab
+ic https://fontawesome.com/search fontawesome
+fs https://www.fontshare.com fontshare
+us https://unsplash.com unsplash
+fg https://figma.com figma
+wt https://wakatime.com/dashboard wakatime
+fb https://facebook.com facebook
+tw https://twitter.com twitter
+sw https://showwcase.com showwcase
+rd https://reddit.com reddit
