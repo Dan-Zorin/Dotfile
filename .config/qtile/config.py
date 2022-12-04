@@ -357,7 +357,8 @@ floating_layout=layout.Floating(
         Match(wm_class='ssh-askpass'),
         Match(wm_class='lxpolkit'),
         Match(wm_class='yad'),
-    ]
+    ],
+    **layout_theme
 )
 
 auto_fullscreen = True
