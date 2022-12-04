@@ -33,10 +33,11 @@ keys = [
     Key([mod], "F4", lazy.spawn("discord")),
 # SUPER + ... KEYS
     Key([mod], "d", lazy.spawn("dmenu_run")),
+    Key([mod], "b", lazy.spawn(f"{home}/dmenuscripts/quickmarks.sh")),
     Key([mod], "v", lazy.spawn("rofi -show drun")),
     Key([mod], "period", lazy.spawn("rofi -show emoji")),
     Key([mod], "return", lazy.spawn(myTerm)),
-    Key([mod], "m", lazy.spawn(f"{myTerm} -e ranger /home/ton1czech")),
+    Key([mod], "m", lazy.spawn(f"{myTerm} -e ranger {home}")),
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "x", lazy.shutdown()),
@@ -93,7 +94,7 @@ for i in groups:
 layout_theme={
     "margin": 15,
     "border_width":1,
-    "border_focus": "#FF00FF",
+    "border_focus": "#ff00ff",
     "border_normal": "#45475A"
 }
 
