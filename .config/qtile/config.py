@@ -136,7 +136,7 @@ def init_widgets_list():
             background=colors["night"],
         ),
         widget.Image(
-            filename='~/.config/qtile/Assets/launch_Icon.png',
+            filename='~/.config/qtile/assets/logo.png',
             margin=2,
             background=colors["night"],
             decorations=[
@@ -184,18 +184,6 @@ def init_widgets_list():
             length=3,
             background=colors["light"],
         ),
-        # widget.WindowName(
-        #     background=colors["light"],
-        #     format="{name}",
-        #     empty_group_string = '',
-        #     decorations=[
-        #         PowerLineDecoration(
-        #             path='rounded_right',
-        #             override_colour=colors["light"], 
-        #             size=roundness
-        #         )
-        #     ],
-        # ),
         widget.Spacer(
             background=colors["light"],
             decorations=[
@@ -260,7 +248,6 @@ def init_widgets_list():
             background=colors["medium"],
         ),
         widget.Memory(format='{MemUsed: .0f}{mm}',
-            fontsize=12,
             background=colors["medium"],
         ),
         widget.Spacer(
