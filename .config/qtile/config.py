@@ -267,7 +267,7 @@ screens=[
             app_key='50dfe3c4af787e95cfb00325885f0019',
             background=colors["dark"],
             cityid=3076586,
-            format='{icon}  {main_temp}°{units_temperature}'
+            format='{icon}  {main_temp: .1f}°{units_temperature}'
         ),
         widget.Spacer(
             length=10,
@@ -454,7 +454,7 @@ screens=[
             app_key='50dfe3c4af787e95cfb00325885f0019',
             background=colors["dark"],
             cityid=3076586,
-            format='{icon}  {main_temp}°{units_temperature}'
+            format='{icon}  {main_temp: .1f}°{units_temperature}'
         ),
         widget.Spacer(
             length=10,
