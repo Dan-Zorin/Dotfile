@@ -212,7 +212,7 @@ screens=[
             ]
         ),
         widget.Spacer(
-            length=550,
+            length=600,
             background=colors["light"],
             decorations=[
                 PowerLineDecoration(
@@ -221,16 +221,6 @@ screens=[
                     size=roundness
                 )
             ]
-        ),
-        widget.TextBox(
-            text="",
-            font="Font Awesome 6 Free Solid",
-            fontsize=13,
-            background=colors["medium"],
-        ),
-        widget.CPU(
-            background=colors["medium"],
-            format='{load_percent: .0f}%'
         ),
         widget.Spacer(
             length=10,
@@ -418,16 +408,6 @@ screens=[
                     size=roundness
                 )
             ]
-        ),
-        widget.TextBox(
-            text="",
-            font="Font Awesome 6 Free Solid",
-            fontsize=13,
-            background=colors["medium"],
-        ),
-        widget.CPU(
-            background=colors["medium"],
-            format='{load_percent: .0f}%'
         ),
         widget.Spacer(
             length=10,
