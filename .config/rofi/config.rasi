@@ -28,7 +28,7 @@ configuration{
 }
 
 window {
-    height: 300;
+    height: 350;
     border: 1;
     border-radius: 10;
     border-color: @border;
