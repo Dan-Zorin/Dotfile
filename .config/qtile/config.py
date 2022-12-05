@@ -293,7 +293,7 @@ screens=[
             ],
         ),
         widget.TextBox(
-            text="",
+            text="",
             font="Font Awesome 6 Free Solid",
             fontsize=13,
             padding=0,
@@ -480,7 +480,7 @@ screens=[
             ],
         ),
         widget.TextBox(
-            text="",
+            text="",
             font="Font Awesome 6 Free Solid",
             fontsize=13,
             padding=0,
