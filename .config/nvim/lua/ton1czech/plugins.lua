@@ -31,6 +31,9 @@ return packer.startup(function(use)
     -- plugin manager
     use("wbthomason/packer.nvim")
 
+    -- lua functions
+    use("nvim-lua/plenary.nvim")
+
     -- colorscheme
     use("catppuccin/nvim")
 
@@ -48,6 +51,9 @@ return packer.startup(function(use)
 
     -- commenting with gc
     use("numToStr/Comment.nvim")
+
+    -- file explorer
+    use("nvim-tree/nvim-tree.lua")
 
     if packer_bootstrap then
         require("packer").sync()
