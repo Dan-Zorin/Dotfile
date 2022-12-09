@@ -30,4 +30,4 @@ o.clipboard:append("unnamedplus")
 o.splitright = true
 o.splitbelow = true
 
-o.iskeyword:append("-"
+o.iskeyword:append("-")
