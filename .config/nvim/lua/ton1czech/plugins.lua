@@ -61,6 +61,10 @@ return packer.startup(function(use)
     -- statusline
     use("nvim-lualine/lualine.nvim")
 
+    -- fuzzy finding
+    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+    use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
+
     if packer_bootstrap then
         require("packer").sync()
     end
