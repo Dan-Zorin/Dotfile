@@ -1,4 +1,5 @@
 local o = vim.opt
+local g = vim.g
 
 -- line numbers
 o.relativenumber = true
@@ -30,4 +31,9 @@ o.clipboard:append("unnamedplus")
 o.splitright = true
 o.splitbelow = true
 
+-- neovide config
+o.guifont = {"Fira Code", ":h15"}
+g.neovide_transparency=0.55
+
+-- treat - as a word
 o.iskeyword:append("-")
