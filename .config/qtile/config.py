@@ -187,6 +187,7 @@ def init_widgets():
         widget.WindowName(
             background=colors["light"],
             format="{name}",
+            max_chars=77,
             decorations=[
                 PowerLineDecoration(
                     path='rounded_right',
