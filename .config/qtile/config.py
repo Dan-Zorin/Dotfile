@@ -34,8 +34,9 @@ keys = [
     Key([mod], "F5", lazy.spawn("discord")),
 # SUPER + ... KEYS
     Key([mod], "d", lazy.spawn("dmenu_run")),
-    Key([mod], "b", lazy.spawn(f"{home}/dmenuscripts/quickmarks.sh")),
+    Key([mod], "w", lazy.spawn(f"{home}/dmenuscripts/quickmarks.sh")),
     Key([mod], "v", lazy.spawn("rofi -show drun")),
+    Key([mod], "b", lazy.spawn("pcmanfm")),
     Key([mod], "period", lazy.spawn("rofi -show emoji")),
     Key([mod], "return", lazy.spawn(myTerm)),
     Key([mod], "m", lazy.spawn(f"{myTerm} -e ranger {home}")),
@@ -47,6 +48,7 @@ keys = [
 # MEDIA KEYS
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 -q set Master 2dB+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 -q set Master 2dB-")),
+    Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse set Master 1+ toggle")),
 # SCREENSHOTS
     Key([], "Print", lazy.spawn('flameshot gui')),
     Key(["control"], "Print", lazy.spawn('flameshot screen -n 1 -p ' + home + '/Pictures')),
