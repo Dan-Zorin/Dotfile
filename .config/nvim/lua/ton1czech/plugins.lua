@@ -81,6 +81,9 @@ return packer.startup(function(use)
     -- wakatime
     use("wakatime/vim-wakatime")    -- wakatime integration
 
+    -- display colors
+    use("ap/vim-css-color")
+
     if packer_bootstrap then
         require("packer").sync()
     end

@@ -37,3 +37,8 @@ g.neovide_transparency=0.55
 
 -- treat - as a word
 o.iskeyword:append("-")
+
+-- swap files
+o.swapfile = false
+o.backup = false
+o.undofile = false
