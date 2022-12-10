@@ -24,6 +24,13 @@ keymap.set("n", "<leader>tx", ":tabclose<CR>")    -- close current tab
 keymap.set("n", "<leader>tn", ":tabn<CR>")        -- go to next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>")        -- go to previous tab
 
+-- vertical movement
+keymap.set("n", "<C-d>", "<C-d>zz")    -- go down by half a page and center
+keymap.set("n", "<C-u>", "<C-u>zz")    -- go up by half a page and center
+
+-- when searching for a word center the view
+keymap.set("n", "n", "nzz")
+
 -----------------
 -- plugin keymaps
 -----------------
@@ -40,4 +47,3 @@ keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>")      -- find strin
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>")    -- find string under cursor in current working directory
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")        -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")      -- list available help tags
-
