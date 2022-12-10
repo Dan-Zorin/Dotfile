@@ -84,6 +84,9 @@ return packer.startup(function(use)
     -- display colors
     use("ap/vim-css-color")
 
+    -- add transparency
+    use("xiyaowong/nvim-transparent")
+
     if packer_bootstrap then
         require("packer").sync()
     end
