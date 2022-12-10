@@ -29,8 +29,9 @@ keys = [
 # SUPER + FUNCTION KEYS
     Key([mod], "F1", lazy.spawn(myBrowser)),
     Key([mod], "F2", lazy.spawn(myIDE)),
-    Key([mod], "F3", lazy.spawn("spotify")),
-    Key([mod], "F4", lazy.spawn("discord")),
+    Key([mod], "F3", lazy.spawn("neovide")),
+    Key([mod], "F4", lazy.spawn("spotify")),
+    Key([mod], "F5", lazy.spawn("discord")),
 # SUPER + ... KEYS
     Key([mod], "d", lazy.spawn("dmenu_run")),
     Key([mod], "b", lazy.spawn(f"{home}/dmenuscripts/quickmarks.sh")),
@@ -41,15 +42,8 @@ keys = [
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
     Key([mod], "x", lazy.shutdown()),
+    Key([mod], "r", lazy.restart()),
     Key([mod], "comma", lazy.next_screen()),
-# SUPER + SHIFT KEYS
-    Key([mod, "shift"], "r", lazy.restart()),
-# CONTROL + ALT KEYS
-    Key([alt, "control"], "u", lazy.spawn('pavucontrol')),
-# ALT + ... KEYS
-    Key([alt], "w", lazy.spawn('garuda-welcome')),
-# CONTROL + SHIFT KEYS
-    Key(["control", "shift"], "Escape", lazy.spawn('lxtask')),
 # MEDIA KEYS
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 -q set Master 2dB+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 -q set Master 2dB-")),
