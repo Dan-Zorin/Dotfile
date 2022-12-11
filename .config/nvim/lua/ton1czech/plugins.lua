@@ -75,6 +75,17 @@ return packer.startup(function(use)
     use("saadparwaiz1/cmp_luasnip") -- for autocompletion
     use("rafamadriz/friendly-snippets") -- useful snippets
 
+    -- managing & installing lsp servers
+    use("williamboman/mason.nvim")
+    use("williamboman/mason-lspconfig.nvim")
+
+    -- configuring lsp servers
+    use("neovim/nvim-lspconfig")
+    use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
+    use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
+    use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
+    use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+
     -- git integration
     use("lewis6991/gitsigns.nvim")    -- show line modifications
 
