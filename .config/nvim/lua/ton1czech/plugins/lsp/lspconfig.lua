@@ -120,7 +120,7 @@ lspconfig["denols"].setup({
 })
 
 -- configure docker
-lspconfig["docker"].setup({
+lspconfig["dockerls"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })

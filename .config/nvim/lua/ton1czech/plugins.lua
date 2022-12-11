@@ -42,7 +42,7 @@ return packer.startup(function(use)
 
     -- maximize and restore current window split
     use("szw/vim-maximizer")
-    
+
     -- add, delete, change surroundings
     use("tpope/vim-surround")
 
@@ -85,6 +85,10 @@ return packer.startup(function(use)
     use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
     use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
     use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+
+    -- formatting & linting
+    use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
+    use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
 
     -- git integration
     use("lewis6991/gitsigns.nvim")    -- show line modifications
