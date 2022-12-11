@@ -35,6 +35,7 @@ keys = [
 # SUPER + ... KEYS
     Key([mod], "d", lazy.spawn("dmenu_run")),
     Key([mod], "w", lazy.spawn(f"{home}/dmenuscripts/quickmarks.sh")),
+    Key([mod], "p", lazy.spawn(f"{home}/dmenuscripts/quickjumps.sh")),
     Key([mod], "v", lazy.spawn("rofi -show drun")),
     Key([mod], "b", lazy.spawn("pcmanfm")),
     Key([mod], "period", lazy.spawn("rofi -show emoji")),
