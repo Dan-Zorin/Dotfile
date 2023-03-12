@@ -1,7 +1,7 @@
 {
   // *************** THEME **************
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.colorTheme": "Shades of Purple (Super Dark)",
 
   // *************** FONT **************
   "editor.fontFamily": "'Fira Code', 'Consolas', 'Courier New', monospace",
@@ -26,6 +26,10 @@
   "editor.guides.bracketPairs": "active",
   "editor.inlineSuggest.enabled": true,
   "window.zoomLevel": 3,
+  "explorer.confirmDragAndDrop": false,
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.cursorSmoothCaretAnimation": "on",
 
   // Terminal
   "terminal.external.linuxExec": "alacritty",
@@ -53,10 +57,20 @@
   // Glass It
   "glassit.alpha": 220,
 
+  // Git
+  "git.openRepositoryInParentFolders": "always",
+
+  // VIM
+  "vim.useSystemClipboard": true,
+  "vim.camelCaseMotion.enable": false,
+
   // *************** LANGUAGES **************
   // Python
   "python.formatting.provider": "none",
   "python.terminal.executeInFileDir": true,
+  "[python]": {
+    "editor.formatOnType": true
+  },
 
   // C
   "[c]": {
@@ -99,5 +113,9 @@
   },
   "javascript.format.placeOpenBraceOnNewLineForControlBlocks": true,
   "javascript.preferences.quoteStyle": "single",
-  "javascript.updateImportsOnFileMove.enabled": "never"
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "editor.unicodeHighlight.allowedCharacters": {
+    " ": true,
+    "–": true
+  }
 }
