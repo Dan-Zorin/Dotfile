@@ -122,21 +122,7 @@ alias pts='cd ~/Coding/projects/'
 # custom git
 alias gaa='git add .'
 
-function gcmn
-    git commit -m "🎁 NEW: $argv"
-end
-
-function gcmi
-    git commit -m "👌 IMPROVE: $argv"
-end
-
-function gcmr
-    git commit -m "❌ REMOVED: $argv"
-end
-
-function gcmb
-    git commit -m "🐛 BUG FIX: $argv"
-end
+alias gcm='sh ~/scripts/fastmitts.sh'
 
 alias gpp='git push -u origin master'
 
