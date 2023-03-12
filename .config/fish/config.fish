@@ -158,6 +158,12 @@ function mkcd -d "Create a directory and set CWD"
     end
 end
 
+## NVM
+function nvm
+   bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+
+end
+
 ## Run fastfetch if session is interactive
 if status --is-interactive && type -q fastfetch
    fastfetch
