@@ -9,9 +9,9 @@ from qtile_extras.widget.decorations import PowerLineDecoration
 home=os.path.expanduser('~')
 mod="mod4" # super key
 alt="mod1"
-myTerm="alacritty"
-myBrowser="brave"
-myIDE="code"
+myTerm="kitty"
+myBrowser="firefox"
+myIDE="kitty -e nvim"
 
 @lazy.function
 def window_to_prev_group(qtile):
@@ -260,7 +260,8 @@ def init_widgets():
         widget.OpenWeather(
             app_key='50dfe3c4af787e95cfb00325885f0019',
             background=colors["dark"],
-            cityid=3076586,
+            cityid=3714637,
+            #London (Original ID 3076586)
             format='{icon}  {main_temp: .1f}°{units_temperature}'
         ),
         widget.Spacer(
