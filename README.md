@@ -28,7 +28,6 @@
 
 ## 💻 **QUICK MENU**
 
-- [alacritty](https://github.com/ton1czech/dotfiles/tree/master/.config/alacritty)
 - [bash](https://github.com/ton1czech/dotfiles/blob/master/.bashrc)
 - [cava](https://github.com/ton1czech/dotfiles/blob/master/.config/cava/config)
 - [dmenu](https://github.com/ton1czech/dotfiles/blob/master/.config/dmenu/config.h)
@@ -47,7 +46,6 @@
 - [sddm](https://github.com/ton1czech/dotfiles/blob/master/etc/sddm.conf)
 - [spicetify](https://github.com/ton1czech/dotfiles/tree/master/.config/spicetify)
 - [starship](https://github.com/ton1czech/dotfiles/blob/master/.config/starship.toml)
-- [vim](https://github.com/ton1czech/dotfiles/blob/master/.vimrc)
 - [vs code](https://github.com/ton1czech/dotfiles/blob/master/.config/Code/User/settings.json)
 
 <br />
