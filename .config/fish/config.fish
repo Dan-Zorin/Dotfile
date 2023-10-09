@@ -154,3 +154,5 @@ end
 if status --is-interactive && type -q fastfetch
    fastfetch
 end
+
+nvm use --lts --silent
