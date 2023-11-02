@@ -150,7 +150,12 @@ function nvm
 
 end
 
+nvm use --lts --silent
+
+set PATH $PATH /usr/bin/mcfly
+
 ## Run fastfetch if session is interactive
 if status --is-interactive && type -q fastfetch
    fastfetch
 end
+

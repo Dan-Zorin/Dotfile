@@ -47,9 +47,9 @@ keys = [
     Key([mod], "r", lazy.restart()),
     Key([mod], "comma", lazy.next_screen()),
 # MEDIA KEYS
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 -q set Master 2dB+")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 -q set Master 2dB-")),
-    Key([], "XF86AudioMute", lazy.spawn("amixer -D pulse set Master 1+ toggle")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -q sset Master 5%+")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -q sset Master 5%-")),
+    Key([], "XF86AudioMute", lazy.spawn("amixer -q sset Master toggle")),
 # SCREENSHOTS
     Key([], "Print", lazy.spawn('flameshot gui')),
     Key(["control"], "Print", lazy.spawn('flameshot screen -n 1 -p ' + home + '/Pictures')),

@@ -1,7 +1,7 @@
 {
   // *************** THEME **************
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Shades of Purple (Super Dark)",
+  "workbench.colorTheme": "Batman",
 
   // *************** FONT **************
   "editor.fontFamily": "'Fira Code', 'Consolas', 'Courier New', monospace",
@@ -34,6 +34,12 @@
   // Terminal
   "terminal.external.linuxExec": "alacritty",
   "terminal.integrated.shell.linux": "/usr/bin/fish",
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "terminal.integrated.profiles.linux": {
+    "fish": {
+      "path": "/usr/bin/fish"
+    }
+  },
 
   // *************** EXTENSIONS **************
   // Live Server
@@ -117,5 +123,11 @@
   "editor.unicodeHighlight.allowedCharacters": {
     " ": true,
     "–": true
+  },
+  "window.menuBarVisibility": "toggle",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
   }
 }
+
