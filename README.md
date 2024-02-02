@@ -30,8 +30,6 @@
 
 - [bash](https://github.com/ton1czech/dotfiles/blob/master/.bashrc)
 - [cava](https://github.com/ton1czech/dotfiles/blob/master/.config/cava/config)
-- [dmenu](https://github.com/ton1czech/dotfiles/blob/master/.config/dmenu/config.h)
-- [dmenu scripts](https://github.com/ton1czech/dotfiles/tree/master/dmenuscripts)
 - [dunst](https://github.com/ton1czech/dotfiles/blob/master/.config/dunst/dunstrc)
 - [fastfetch](https://github.com/ton1czech/dotfiles/blob/master/.config/fastfetch/config.conf)
 - [fish](https://github.com/ton1czech/dotfiles/tree/master/.config/fish)
@@ -43,10 +41,8 @@
 - [picom](https://github.com/ton1czech/dotfiles/blob/master/.config/picom/picom.conf)
 - [qtile](https://github.com/ton1czech/dotfiles/tree/master/.config/qtile)
 - [rofi](https://github.com/ton1czech/dotfiles/tree/master/.config/rofi)
-- [sddm](https://github.com/ton1czech/dotfiles/blob/master/etc/sddm.conf)
 - [spicetify](https://github.com/ton1czech/dotfiles/tree/master/.config/spicetify)
 - [starship](https://github.com/ton1czech/dotfiles/blob/master/.config/starship.toml)
-- [vs code](https://github.com/ton1czech/dotfiles/blob/master/.config/Code/User/settings.json)
 
 <br />
 
