@@ -1,2 +1,0 @@
-dt /home/ton1czech/Coding/projects/dotfiles/ dotfiles
-if /home/ton1czech/Coding/projects/python/inflace-cr/ inflace
