@@ -20,7 +20,7 @@
 
 ## 🔎 **SHOWCASE**
 
-<img src='https://imgur.com/XAZfZoj'>
+<img src='https://i.imgur.com/XAZfZoj.png'>
 
 <br />
 
