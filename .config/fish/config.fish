@@ -144,8 +144,6 @@ function mkcd -d "Create a directory and set CWD"
     end
 end
 
-nvm use --lts --silent
-
 set PATH $PATH /usr/bin/mcfly
 
 ## Run fastfetch if session is interactive
