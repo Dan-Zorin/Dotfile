@@ -144,12 +144,6 @@ function mkcd -d "Create a directory and set CWD"
     end
 end
 
-## NVM
-function nvm
-   bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
-
-end
-
 nvm use --lts --silent
 
 set PATH $PATH /usr/bin/mcfly
