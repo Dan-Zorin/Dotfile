@@ -3,7 +3,7 @@ configuration{
     font: "Satoshi 16";
     icon-theme: "Tela-pink-dark";
     show-icons: true;
-    terminal: "alacritty";
+    terminal: "kitty";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
