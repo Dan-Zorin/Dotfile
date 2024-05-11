@@ -281,7 +281,7 @@ def init_widgets():
             font="Font Awesome 6 Free Solid",
             background=colors["dark"],
         ),
-        widget.Volume(
+        widget.PulseVolume(
             background=colors["dark"],
         ),
         widget.Spacer(
