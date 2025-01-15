@@ -12,7 +12,7 @@
 
 ## 💾 **ABOUT**
 
-**spice** for my linux operating systems
+**Server Managment Workspace** for my linux operating systems 
 
 <br />
 
@@ -27,15 +27,6 @@
 ---
 
 ## 💻 **QUICK MENU**
-
-- [dunst](https://github.com/ton1czech/dotfiles/blob/master/.config/dunst/dunstrc)
-- [fish](https://github.com/ton1czech/dotfiles/tree/master/.config/fish)
-- [fontconfig](https://github.com/ton1czech/dotfiles/blob/master/.config/fontconfig/fonts.conf)
-- [ghostty](https://github.com/ton1czech/dotfiles/tree/master/.config/ghostty)
-- [picom](https://github.com/ton1czech/dotfiles/blob/master/.config/picom/picom.conf)
-- [qtile](https://github.com/ton1czech/dotfiles/tree/master/.config/qtile)
-- [rofi](https://github.com/ton1czech/dotfiles/tree/master/.config/rofi)
-- [starship](https://github.com/ton1czech/dotfiles/blob/master/.config/starship.toml)
 
 <br />
 
@@ -56,7 +47,3 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <br />
 
 ---
-
-## 📌 **LINKS**
-
-[<img alt="Github" src="https://img.shields.io/badge/@ton1czech-%23181717.svg?style=for-the-badge&logo=github&logoColor=white" />](https://github.com/ton1czech)
