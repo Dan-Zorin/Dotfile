@@ -31,7 +31,7 @@
 - [dunst](https://github.com/ton1czech/dotfiles/blob/master/.config/dunst/dunstrc)
 - [fish](https://github.com/ton1czech/dotfiles/tree/master/.config/fish)
 - [fontconfig](https://github.com/ton1czech/dotfiles/blob/master/.config/fontconfig/fonts.conf)
-- [kitty](https://github.com/ton1czech/dotfiles/tree/master/.config/kitty)
+- [ghostty](https://github.com/ton1czech/dotfiles/tree/master/.config/ghostty)
 - [picom](https://github.com/ton1czech/dotfiles/blob/master/.config/picom/picom.conf)
 - [qtile](https://github.com/ton1czech/dotfiles/tree/master/.config/qtile)
 - [rofi](https://github.com/ton1czech/dotfiles/tree/master/.config/rofi)
